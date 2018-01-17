@@ -11,16 +11,16 @@
 <meta name="keywords" content="by 朱海硕">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2.0中各文件之间的引用加载关系">
-<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/11/06/vue2.0中各文件之间的引用加载关系/index.html">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/11/06/（vue2-0）各文件之间的引用、加载关系/index.html">
 <meta property="og:site_name" content="随笔">
 <meta property="og:description" content="1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件">
-<meta property="og:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/vue2.0中各文件之间的引用加载关系/vue2.0中各文件之间的引用加载关系/mulu.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/vue2.0中各文件之间的引用加载关系/vue2.0中各文件之间的引用加载关系/siwei.png">
-<meta property="og:updated_time" content="2017-11-06T04:19:24.413Z">
+<meta property="og:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/（vue2-0）各文件之间的引用、加载关系/（vue2-0）各文件之间的引用、加载关系/mulu.png">
+<meta property="og:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/（vue2-0）各文件之间的引用、加载关系/（vue2-0）各文件之间的引用、加载关系/siwei.png">
+<meta property="og:updated_time" content="2018-01-17T06:30:31.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0中各文件之间的引用加载关系">
 <meta name="twitter:description" content="1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件">
-<meta name="twitter:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/vue2.0中各文件之间的引用加载关系/vue2.0中各文件之间的引用加载关系/mulu.png">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/blog/2017/11/06/（vue2-0）各文件之间的引用、加载关系/（vue2-0）各文件之间的引用、加载关系/mulu.png">
   
     <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
   
@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhuhaishuo.github.io/blog"></form>
@@ -67,9 +67,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vue2.0中各文件之间的引用加载关系" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-（vue2-0）各文件之间的引用、加载关系" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/06/vue2.0中各文件之间的引用加载关系/" class="article-date">
+    <a href="/2017/11/06/（vue2-0）各文件之间的引用、加载关系/" class="article-date">
   <time datetime="2017-11-06T03:57:33.000Z" itemprop="datePublished">2017-11-06</time>
 </a>
     
@@ -90,11 +90,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><style><br></style></p>
-<div><br>    <span style="color:#e31d1a">1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件</span><br>    <br><br>    <a id="more"></a><br>    <img src="vue2.0中各文件之间的引用加载关系/mulu.png" alt="文件目录图片"><br>    <img src="vue2.0中各文件之间的引用加载关系/siwei.png" alt="文件目录图片"><br>    <br><br>    <pre><br>        import Vue from ‘vue’<br>        import App from ‘./App’<br>        /<em> eslint-disable no-new </em>/<br>        new Vue({<br>          el: ‘#app’,<br>          template: ‘<app>‘,<br>          components: { App }<br>        })<br>    </app></pre><br>    <br><br>    <span style="color:#e31d1a">2.App.vue是我们的主组件,所有页面都是在App.vue里边自定义的组建中加载的，所有组件都是App.vue的子组件</span><br>    <br><br>    <pre><br>        template<br>        div id=”app”<br>            hello /hello<br>        div<br>        template<br>        script<br>            import Hello from ‘./components/Hello’<br>            export default {<br>            name: ‘app’,<br>            components: {<br>            Hello<br>            }<br>        }<br>        script&gt;<br>    </pre><br>    <br><br>    <span style="color:#e31d1a">1.index.html文件入口</span><br>    <span style="color:#e31d1a">2.src放置组件和入口文件</span><br>    <span style="color:#e31d1a">3.node_module为所有依赖的模块</span><br>    <span style="color:#e31d1a">4.config中配置了路径端口值等</span><br>    <span style="color:#e31d1a">5.build中配置了webpack的基本配置、开发环境、生产环境配置等</span><br>    <br><br></div>
+<div><br>    <span style="color:#e31d1a">1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件</span><br>    <br><br>    <a id="more"></a><br>    <img src="（vue2-0）各文件之间的引用、加载关系/mulu.png" alt="文件目录图片"><br>    <img src="（vue2-0）各文件之间的引用、加载关系/siwei.png" alt="文件目录图片"><br>    <br><br>    <pre><br>        import Vue from ‘vue’<br>        import App from ‘./App’<br>        /<em> eslint-disable no-new </em>/<br>        new Vue({<br>          el: ‘#app’,<br>          template: ‘<app>‘,<br>          components: { App }<br>        })<br>    </app></pre><br>    <br><br>    <span style="color:#e31d1a">2.App.vue是我们的主组件,所有页面都是在App.vue里边自定义的组建中加载的，所有组件都是App.vue的子组件</span><br>    <br><br>    <pre><br>        template<br>        div id=”app”<br>            hello /hello<br>        div<br>        template<br>        script<br>            import Hello from ‘./components/Hello’<br>            export default {<br>            name: ‘app’,<br>            components: {<br>            Hello<br>            }<br>        }<br>        script&gt;<br>    </pre><br>    <br><br>    <span style="color:#e31d1a">1.index.html文件入口</span><br>    <span style="color:#e31d1a">2.src放置组件和入口文件</span><br>    <span style="color:#e31d1a">3.node_module为所有依赖的模块</span><br>    <span style="color:#e31d1a">4.config中配置了路径端口值等</span><br>    <span style="color:#e31d1a">5.build中配置了webpack的基本配置、开发环境、生产环境配置等</span><br>    <br><br></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/06/vue2.0中各文件之间的引用加载关系/" data-id="cjch8qw4k0003wkubf9a5fmk8" class="article-share-link">Share</a>
+      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/06/（vue2-0）各文件之间的引用、加载关系/" data-id="cjciorj2k00056sub8xh9t82b" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
@@ -106,7 +106,7 @@
 <nav id="article-nav">
   
     <a href="/2017/11/17/vue2-0中使用百度地图点聚合/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           vue2.0中使用百度地图点聚合
@@ -116,7 +116,7 @@
   
   
     <a href="/2017/10/26/Vue2.0构建新项目/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Vue2.0(一)创建新项目</div>
     </a>
   
@@ -134,7 +134,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
     </div>
@@ -144,7 +144,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/by-朱海硕/" style="font-size: 10px;">by 朱海硕</a>
     </div>
@@ -155,7 +155,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/目录/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/目录/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/目录/2017/09/">September 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
   </div>
 
@@ -163,7 +163,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -176,7 +176,7 @@
           </li>
         
           <li>
-            <a href="/2017/11/06/vue2.0中各文件之间的引用加载关系/">vue2.0中各文件之间的引用加载关系</a>
+            <a href="/2017/11/06/（vue2-0）各文件之间的引用、加载关系/">vue2.0中各文件之间的引用加载关系</a>
           </li>
         
           <li>
@@ -200,7 +200,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
