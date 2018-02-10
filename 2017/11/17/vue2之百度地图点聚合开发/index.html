@@ -5,23 +5,23 @@
   
 
   
-  <title>vue2之百度地图点聚合开发 | 随笔</title>
+  <title>vue2.0之百度地图点聚合开发 | 随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此文讲述在vue中使用百度地图点集合功能，在使用点聚合功能时需要以下几项配置： 一.npm安装Echarts： npm install echarts – save  安装成功后Echarts会在node_modules目录下 二.引入Echarts：(三种方式)">
+  <meta name="description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
 <meta name="keywords" content="by 朱海硕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2之百度地图点聚合开发">
+<meta property="og:title" content="vue2.0之百度地图点聚合开发">
 <meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度地图点聚合开发/index.html">
 <meta property="og:site_name" content="随笔">
-<meta property="og:description" content="此文讲述在vue中使用百度地图点集合功能，在使用点聚合功能时需要以下几项配置： 一.npm安装Echarts： npm install echarts – save  安装成功后Echarts会在node_modules目录下 二.引入Echarts：(三种方式)">
+<meta property="og:description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
 <meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度地图点聚合开发/vueMap-00.jpg">
 <meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度地图点聚合开发/vueMap-01.jpg">
 <meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度地图点聚合开发/vueMap-02.jpg">
 <meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度地图点聚合开发/vueMap-03.jpg">
-<meta property="og:updated_time" content="2018-01-17T08:14:40.007Z">
+<meta property="og:updated_time" content="2018-02-10T10:25:34.316Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2之百度地图点聚合开发">
-<meta name="twitter:description" content="此文讲述在vue中使用百度地图点集合功能，在使用点聚合功能时需要以下几项配置： 一.npm安装Echarts： npm install echarts – save  安装成功后Echarts会在node_modules目录下 二.引入Echarts：(三种方式)">
+<meta name="twitter:title" content="vue2.0之百度地图点聚合开发">
+<meta name="twitter:description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
 <meta name="twitter:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度地图点聚合开发/vueMap-00.jpg">
   
     <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
@@ -62,9 +62,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhuhaishuo.github.io/blog"></form>
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue2之百度地图点聚合开发
+      vue2.0之百度地图点聚合开发
     </h1>
   
 
@@ -95,26 +95,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><p style="color: #e31d1a;">此文讲述在vue中使用百度地图点集合功能，在使用点聚合功能时需要以下几项配置：</p><p></p>
-<p></p><p><span style="color: #e31d1a;">一.</span>npm安装Echarts： npm install echarts – save  安装成功后Echarts会在node_modules目录下</p><p></p>
-<p></p><p><span style="color: #e31d1a;">二.</span>引入Echarts：(三种方式)</p><br><a id="more"></a><p></p>
-<p></p><p>1可直接使用线上cdn地址，在index.html中引用一个script标签:</p><p></p>
-<p><pre><code>&lt;script src=”<a href="https://cdn.bootcss.com/echarts/3.8.4/echarts.min.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="noopener">https://cdn.bootcss.com/echarts/3.8.4/echarts.min.js&quot;&gt;&lt;/script&amp;gt</a>;<br></code></pre></p>
-<p></p><p>2在main.js中全局引用：</p><p></p>
-<p><pre><code>import Echarts from ‘Echarts’; // 引入Echarts<br>Vue.use(Echarts); //  使用Echarts<br></code></pre></p>
-<p></p><p>3按需引入：</p><p></p>
-<p><pre><code>require(‘echarts/lib/echarts’);// 引入 ECharts 主模块<br>require(‘echarts/lib/chart/bar’);// 引入柱状图<br>require(‘echarts/lib/component/tooltip’);// 引入提示框组件<br>require(‘echarts/lib/component/title’);// 引入标题组件<br></code></pre></p>
-<p></p><p><span style="color: #e31d1a;">三.</span>使用Echarts：引入成功后，在template中定义一个div，加上ID ，并设置高度，若高度不设置，地图将不会显示。</p><p></p>
-<p></p><p>1初始化：</p><p></p>
-<p><pre><code>let myChart = echarts.init(document.getElementById(“clear_work”)); //  初始化地图，这里clear_work为id<br></code></pre></p>
-<p></p><p>2插入opation数据：</p><p></p>
-<p><pre><code>Chart.setOption(this.clear_work_obj); //  插入数据，这里clear_work_obj是opation，只是自己取得名字方便区分<br>window.addEventListener(‘resize’, function () { //  Canvas宽度自适应<br>   myChart.resize(); // 使用resize方法，动态设置容器的宽度，用于自适应图表<br>});<br></code></pre></p>
-<p></p><p><span style="color: #e31d1a;">四.</span>完成上述步骤后，一个完整的Echarts图表就生成了，文字叙述不太形象，附上代码图片：</p><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-00.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-01.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-02.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-03.jpg" title="图片"><p></p>
+        <p><span style="color: #ab0e0e"><br>    前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。<br></span></p>
+<p><hr><br><a id="more"></a><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-00.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-01.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-02.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度地图点聚合开发/vueMap-03.jpg" title="图片"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度地图点聚合开发/" data-id="cjcisqbro0003c8ubne1qqc5s" class="article-share-link">Compartir</a>
+      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度地图点聚合开发/" data-id="cjcisqbro0003c8ubne1qqc5s" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
@@ -126,17 +113,17 @@
 <nav id="article-nav">
   
     <a href="/2017/11/17/vue2之百度Echarts统计图/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nuevo</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          vue2之百度Echarts统计图
+          vue2.0中使用百度Echarts
         
       </div>
     </a>
   
   
     <a href="/2017/11/06/vue2框架中各文件之间的引用加载关系/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Viejo</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">vue2框架中各文件之间的引用加载关系</div>
     </a>
   
@@ -164,7 +151,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/by-朱海硕/" style="font-size: 10px;">by 朱海硕</a>
     </div>
@@ -173,7 +160,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -183,16 +170,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/11/17/vue2之百度Echarts统计图/">vue2之百度Echarts统计图</a>
+            <a href="/2017/11/17/vue2之百度Echarts统计图/">vue2.0中使用百度Echarts</a>
           </li>
         
           <li>
-            <a href="/2017/11/17/vue2之百度地图点聚合开发/">vue2之百度地图点聚合开发</a>
+            <a href="/2017/11/17/vue2之百度地图点聚合开发/">vue2.0之百度地图点聚合开发</a>
           </li>
         
           <li>
@@ -220,7 +207,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 朱海硕<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

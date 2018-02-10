@@ -5,16 +5,22 @@
   
 
   
-  <title>vue2之百度Echarts统计图 | 随笔</title>
+  <title>vue2.0中使用百度Echarts | 随笔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="by 朱海硕">
+  <meta name="description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
+<meta name="keywords" content="by 朱海硕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2之百度Echarts统计图">
+<meta property="og:title" content="vue2.0中使用百度Echarts">
 <meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度Echarts统计图/index.html">
 <meta property="og:site_name" content="随笔">
-<meta property="og:updated_time" content="2018-01-17T10:03:50.179Z">
+<meta property="og:description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度Echarts统计图/vueEcharts-01.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度Echarts统计图/vueEcharts-02.jpg">
+<meta property="og:updated_time" content="2018-02-10T10:27:15.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2之百度Echarts统计图">
+<meta name="twitter:title" content="vue2.0中使用百度Echarts">
+<meta name="twitter:description" content="前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/2017/11/17/vue2之百度Echarts统计图/vueEcharts-01.jpg">
   
     <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
   
@@ -54,9 +60,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhuhaishuo.github.io/blog"></form>
@@ -79,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue2之百度Echarts统计图
+      vue2.0中使用百度Echarts
     </h1>
   
 
@@ -87,15 +93,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><span style="color: #ab0e0e"><br>    前言：在vue中使用百度地图点集合功能，并为marker点添加事件，以及打开关闭信息窗口等操作。<br></span></p>
+<p><hr><br><a id="more"></a></p>
+<h4 id="一、npm安装Echarts：安装成功后Echarts会在node-modules目录下"><a href="#一、npm安装Echarts：安装成功后Echarts会在node-modules目录下" class="headerlink" title="一、npm安装Echarts：安装成功后Echarts会在node_modules目录下"></a>一、npm安装Echarts：安装成功后Echarts会在node_modules目录下</h4><ol>
+<li><pre> npm install echarts -- save  </pre>
 
+</li>
+</ol>
+<h4 id="二、引入Echarts：-三种方式"><a href="#二、引入Echarts：-三种方式" class="headerlink" title="二、引入Echarts：(三种方式)"></a>二、引入Echarts：(三种方式)</h4><ol>
+<li>可直接使用线上cdn地址，在index.html中引用script标签:<pre> https://cdn.bootcss.com/echarts/3.8.4/echarts.min.js </pre> </li>
+<li>在main.js中全局引用：<pre>import Echarts from 'Echarts'; // 引入Echarts
+Vue.use(Echarts); //  使用Echarts</pre> </li>
+<li>按需引入：<pre><code>require('echarts/lib/echarts');// 引入 ECharts 主模块
+require('echarts/lib/chart/bar');// 引入柱状图
+require('echarts/lib/component/tooltip');// 引入提示框组件
+require('echarts/lib/component/title');// 引入标题组件
+</code></pre>
 
-
+</li>
+</ol>
+<h4 id="三、使用Echarts"><a href="#三、使用Echarts" class="headerlink" title="三、使用Echarts"></a>三、使用Echarts</h4><ol>
+<li>初始化：引入成功后，在template中定义一个div，加上ID ，并设置高度，若高度不设置，地图将不会显示。<pre><code>let myChart = echarts.init(document.getElementById("clear_work")); //  初始化地图，clear_work为id
+</code></pre></li>
+<li>插入opation数据：<br><pre><code>Chart.setOption(this.clear_work_obj); //  插入数据，这里clear_work_obj是opation，只是自己取得名字方便区分<br>window.addEventListener(‘resize’, function () { //  Canvas宽度自适应<br>myChart.resize(); // 使用resize方法，动态设置容器的宽度，用于自适应图表<br>});<br></code></pre><h4 id="四、完成上述步骤后，一个完整的Echarts图表就生成了。"><a href="#四、完成上述步骤后，一个完整的Echarts图表就生成了。" class="headerlink" title="四、完成上述步骤后，一个完整的Echarts图表就生成了。"></a>四、完成上述步骤后，一个完整的Echarts图表就生成了。</h4><div><br><img src="/2017/11/17/vue2之百度Echarts统计图/vueEcharts-01.jpg" title="图片"><br><img src="/2017/11/17/vue2之百度Echarts统计图/vueEcharts-02.jpg" title="图片"><br></div></li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度Echarts统计图/" data-id="cjcisqbrj0001c8ubpwu1ac8b" class="article-share-link">Compartir</a>
+      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/17/vue2之百度Echarts统计图/" data-id="cjcisqbrj0001c8ubpwu1ac8b" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
@@ -108,8 +134,8 @@
   
   
     <a href="/2017/11/17/vue2之百度地图点聚合开发/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Viejo</strong>
-      <div class="article-nav-title">vue2之百度地图点聚合开发</div>
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">vue2.0之百度地图点聚合开发</div>
     </a>
   
 </nav>
@@ -136,7 +162,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/by-朱海硕/" style="font-size: 10px;">by 朱海硕</a>
     </div>
@@ -145,7 +171,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
     </div>
@@ -155,16 +181,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/11/17/vue2之百度Echarts统计图/">vue2之百度Echarts统计图</a>
+            <a href="/2017/11/17/vue2之百度Echarts统计图/">vue2.0中使用百度Echarts</a>
           </li>
         
           <li>
-            <a href="/2017/11/17/vue2之百度地图点聚合开发/">vue2之百度地图点聚合开发</a>
+            <a href="/2017/11/17/vue2之百度地图点聚合开发/">vue2.0之百度地图点聚合开发</a>
           </li>
         
           <li>
@@ -192,7 +218,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 朱海硕<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
