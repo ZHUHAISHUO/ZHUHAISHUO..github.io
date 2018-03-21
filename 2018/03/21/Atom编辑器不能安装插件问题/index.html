@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Atom编辑器不能安装插件问题 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言：发现一款精致的编辑器Atom，但是在使用vue时，XXX.vue文件并不支持高亮显示。编辑器内部的install a Package和apm install都不支持安装，最终找到一个通过github解决的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atom编辑器不能安装插件问题">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2018/03/21/Atom编辑器不能安装插件问题/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言：发现一款精致的编辑器Atom，但是在使用vue时，XXX.vue文件并不支持高亮显示。编辑器内部的install a Package和apm install都不支持安装，最终找到一个通过github解决的方法。">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/q.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/s.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/a.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/b.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/c.jpg">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/d.jpg">
+<meta property="og:updated_time" content="2018-03-21T08:50:32.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Atom编辑器不能安装插件问题">
+<meta name="twitter:description" content="前言：发现一款精致的编辑器Atom，但是在使用vue时，XXX.vue文件并不支持高亮显示。编辑器内部的install a Package和apm install都不支持安装，最终找到一个通过github解决的方法。">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/2018/03/21/Atom编辑器不能安装插件问题/q.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">今天心情有点好~</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhuhaishuo.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Atom编辑器不能安装插件问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/21/Atom编辑器不能安装插件问题/" class="article-date">
+  <time datetime="2018-03-21T07:51:06.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Atom编辑器不能安装插件问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><span style="color: #ab0e0e"><br>    前言：发现一款精致的编辑器Atom，但是在使用vue时，XXX.vue文件并不支持高亮显示。编辑器内部的install a Package和apm install都不支持安装，最终找到一个通过github解决的方法。<br></span></p>
+<p><hr><br><a id="more"></a></p>
+<h4 id="一、问题："><a href="#一、问题：" class="headerlink" title="一、问题："></a>一、问题：</h4><h5 id="1-使用Install-Packages安装失败，提示请求超时。可能是在大天朝访问国外服务器导致。"><a href="#1-使用Install-Packages安装失败，提示请求超时。可能是在大天朝访问国外服务器导致。" class="headerlink" title="1. 使用Install Packages安装失败，提示请求超时。可能是在大天朝访问国外服务器导致。"></a>1. 使用Install Packages安装失败，提示请求超时。可能是在大天朝访问国外服务器导致。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/q.jpg" title="图片">
+<h5 id="2-使用npm分支下的apm：apm-install-atom-vue，同样出现错误。"><a href="#2-使用npm分支下的apm：apm-install-atom-vue，同样出现错误。" class="headerlink" title="2. 使用npm分支下的apm：apm install atom-vue，同样出现错误。"></a>2. 使用npm分支下的apm：apm install atom-vue，同样出现错误。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/s.jpg" title="图片">
+<h4 id="一、解决方法："><a href="#一、解决方法：" class="headerlink" title="一、解决方法："></a>一、解决方法：</h4><h5 id="1、在github上搜索自己想要安装的插件：如-atom-vue-atom。并复制仓库地址。"><a href="#1、在github上搜索自己想要安装的插件：如-atom-vue-atom。并复制仓库地址。" class="headerlink" title="1、在github上搜索自己想要安装的插件：如 atom-vue atom。并复制仓库地址。"></a>1、在github上搜索自己想要安装的插件：如 atom-vue atom。并复制仓库地址。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/a.jpg" title="图片">
+<h5 id="2、打开atom安装目录，找到packages文件，在此文件下-git-bush-here，打开git窗口。"><a href="#2、打开atom安装目录，找到packages文件，在此文件下-git-bush-here，打开git窗口。" class="headerlink" title="2、打开atom安装目录，找到packages文件，在此文件下 git bush here，打开git窗口。"></a>2、打开atom安装目录，找到packages文件，在此文件下 git bush here，打开git窗口。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/b.jpg" title="图片">
+<h5 id="3、将复制的仓库地址克隆到本地。"><a href="#3、将复制的仓库地址克隆到本地。" class="headerlink" title="3、将复制的仓库地址克隆到本地。"></a>3、将复制的仓库地址克隆到本地。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/c.jpg" title="图片">
+<h5 id="4、将复制的仓库地址克隆到本地。就会发现packages文件夹下多了一个atom-vue文件夹。重启atom，ok了。"><a href="#4、将复制的仓库地址克隆到本地。就会发现packages文件夹下多了一个atom-vue文件夹。重启atom，ok了。" class="headerlink" title="4、将复制的仓库地址克隆到本地。就会发现packages文件夹下多了一个atom-vue文件夹。重启atom，ok了。"></a>4、将复制的仓库地址克隆到本地。就会发现packages文件夹下多了一个atom-vue文件夹。重启atom，ok了。</h5><img src="/2018/03/21/Atom编辑器不能安装插件问题/d.jpg" title="图片">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhuhaishuo.github.io/blog/2018/03/21/Atom编辑器不能安装插件问题/" data-id="cjf0uc4h00001sgub7djfwzg3" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/14/森源项目部署流程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">森源项目部署流程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/by-朱海硕/" style="font-size: 10px;">by 朱海硕</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/03/21/Atom编辑器不能安装插件问题/">Atom编辑器不能安装插件问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/14/森源项目部署流程/">森源项目部署流程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/18/hexo相关问题/">hexo相关问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/vue2之百度Echarts统计图/">vue2.0中使用百度Echarts</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/17/vue2之百度地图点聚合开发/">vue2.0之百度地图点聚合开发</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 朱海硕<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
