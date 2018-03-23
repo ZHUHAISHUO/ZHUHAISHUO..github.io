@@ -5,22 +5,20 @@
   
 
   
-  <title>vue2框架中各文件之间的引用加载关系 | Hexo</title>
+  <title>vue2知识结构图 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言：记录各文件之间加载调用顺序，了解vue运行机制">
-<meta name="keywords" content="by 朱海硕">
+  <meta name="description" content="前言：vue2知识结构图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2框架中各文件之间的引用加载关系">
-<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/11/06/vue2框架中各文件之间的引用加载关系/index.html">
+<meta property="og:title" content="vue2知识结构图">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2018/03/23/vue2知识结构图/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言：记录各文件之间加载调用顺序，了解vue运行机制">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/06/vue2框架中各文件之间的引用加载关系/siwei.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2017/11/06/vue2框架中各文件之间的引用加载关系/mulu1.png">
-<meta property="og:updated_time" content="2018-02-10T10:06:42.304Z">
+<meta property="og:description" content="前言：vue2知识结构图">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/23/vue2知识结构图/vue2.jpg">
+<meta property="og:updated_time" content="2018-03-23T08:13:51.911Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2框架中各文件之间的引用加载关系">
-<meta name="twitter:description" content="前言：记录各文件之间加载调用顺序，了解vue运行机制">
-<meta name="twitter:image" content="https://zhuhaishuo.github.io/2017/11/06/vue2框架中各文件之间的引用加载关系/siwei.png">
+<meta name="twitter:title" content="vue2知识结构图">
+<meta name="twitter:description" content="前言：vue2知识结构图">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/2018/03/23/vue2知识结构图/vue2.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -71,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vue2框架中各文件之间的引用加载关系" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-vue2知识结构图" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/06/vue2框架中各文件之间的引用加载关系/" class="article-date">
-  <time datetime="2017-11-06T03:57:33.000Z" itemprop="datePublished">2017-11-06</time>
+    <a href="/2018/03/23/vue2知识结构图/" class="article-date">
+  <time datetime="2018-03-23T08:12:01.000Z" itemprop="datePublished">2018-03-23</time>
 </a>
     
   </div>
@@ -85,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue2框架中各文件之间的引用加载关系
+      vue2知识结构图
     </h1>
   
 
@@ -93,58 +91,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><span style="color: #ab0e0e"><br>    前言：记录各文件之间加载调用顺序，了解vue运行机制<br></span></p>
-<p><hr><br>    <a id="more"></a></p>
-<h4 id="1-如下图：main-js-是我们的入口文件，主要作用是初始化vue实例并使用需要的插件"><a href="#1-如下图：main-js-是我们的入口文件，主要作用是初始化vue实例并使用需要的插件" class="headerlink" title="1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件"></a>1.如下图：main.js 是我们的入口文件，主要作用是初始化vue实例并使用需要的插件</h4><p><div><br>    <img src="/2017/11/06/vue2框架中各文件之间的引用加载关系/siwei.png" title="图片"><br>    <img src="/2017/11/06/vue2框架中各文件之间的引用加载关系/mulu1.png" title="图片"><br></div><br>    <span style="color: #ab0e0e">1.index.html文件入口 </span><br><br>    <span style="color: #ab0e0e">2.src放置组件和入口文件  </span><br><br>    <span style="color: #ab0e0e">3.node_module为所有依赖的模块  </span><br><br>    <span style="color: #ab0e0e">4.config中配置了路径端口值等  </span><br><br>    <span style="color: #ab0e0e">5.build中配置了webpack的基本配置、开发环境、生产环境配置等  </span><br></p>
-<h4 id="2-实例化一个vue实例"><a href="#2-实例化一个vue实例" class="headerlink" title="2. 实例化一个vue实例"></a>2. 实例化一个vue实例</h4><pre><code>import Vue from &apos;vue&apos;;
-import App from &apos;./App&apos;;
-new Vue({
-  el: &apos;#app&apos;,
-  template: &apos;&lt;App/&gt;&apos;,
-  components: { App }
-})
-</code></pre><h4 id="3-App-vue是我们的主组件-所有页面都是在App-vue里边自定义的组建中加载的，所有组件都是App-vue的子组件"><a href="#3-App-vue是我们的主组件-所有页面都是在App-vue里边自定义的组建中加载的，所有组件都是App-vue的子组件" class="headerlink" title="3. App.vue是我们的主组件,所有页面都是在App.vue里边自定义的组建中加载的，所有组件都是App.vue的子组件"></a>3. App.vue是我们的主组件,所有页面都是在App.vue里边自定义的组建中加载的，所有组件都是App.vue的子组件</h4><pre><code>&lt;template&gt;
-    div id=&quot;app&quot;
-        hello /hello
-    div
-&lt;/template&gt;
-&lt;script&gt;
-    import Hello from &apos;./components/Hello&apos;;
-    export default {
-        name: &apos;app&apos;,
-        components: {
-            Hello
-        }
-    }
-&lt;/script&gt;
-</code></pre>
+        <p><span style="color: #ab0e0e"><br>    前言：vue2知识结构图<br></span></p>
+<p><hr><br><a id="more"></a><br><img src="/2018/03/23/vue2知识结构图/vue2.jpg" title="图片"></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhuhaishuo.github.io/blog/2017/11/06/vue2框架中各文件之间的引用加载关系/" data-id="cjf3o5xls000ct0ubm6xcqikf" class="article-share-link">Share</a>
+      <a data-url="https://zhuhaishuo.github.io/blog/2018/03/23/vue2知识结构图/" data-id="cjf3o5xlc0004t0ubqeqsv7at" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/11/17/vue2之百度地图点聚合开发/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          vue2.0之百度地图点聚合开发
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/26/Vue2-0搭建新项目/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/21/Atom编辑器不能安装插件问题/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vue2.0搭建新项目</div>
+      <div class="article-nav-title">Atom编辑器不能安装插件问题</div>
     </a>
   
 </nav>
