@@ -5,25 +5,20 @@
   
 
   
-  <title>vue2.5引入Echarts出错的问题 | Hexo</title>
+  <title>vue2.5路由全解析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="场景：安装常用引入Echarts方法显示初始化错误问题，之后找到了一个兼容的解决办法。">
+  <meta name="description" content="场景：路由模块功能全解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2.5引入Echarts出错的问题">
-<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2018/04/09/vue2-5引入Echarts出错的问题/index.html">
+<meta property="og:title" content="vue2.5路由全解析">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2018/04/09/vue2-5路由全解析/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="场景：安装常用引入Echarts方法显示初始化错误问题，之后找到了一个兼容的解决办法。">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/quersition.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/error.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/ok.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/dome.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/init.png">
-<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/ok1.png">
-<meta property="og:updated_time" content="2018-04-09T09:51:18.509Z">
+<meta property="og:description" content="场景：路由模块功能全解析">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5路由全解析/router.jpg">
+<meta property="og:updated_time" content="2018-04-09T09:55:19.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2.5引入Echarts出错的问题">
-<meta name="twitter:description" content="场景：安装常用引入Echarts方法显示初始化错误问题，之后找到了一个兼容的解决办法。">
-<meta name="twitter:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5引入Echarts出错的问题/quersition.png">
+<meta name="twitter:title" content="vue2.5路由全解析">
+<meta name="twitter:description" content="场景：路由模块功能全解析">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/2018/04/09/vue2-5路由全解析/router.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -74,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-vue2-5引入Echarts出错的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-vue2-5路由全解析" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/09/vue2-5引入Echarts出错的问题/" class="article-date">
-  <time datetime="2018-04-09T09:27:26.000Z" itemprop="datePublished">2018-04-09</time>
+    <a href="/2018/04/09/vue2-5路由全解析/" class="article-date">
+  <time datetime="2018-04-09T09:53:15.000Z" itemprop="datePublished">2018-04-09</time>
 </a>
     
   </div>
@@ -88,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      vue2.5引入Echarts出错的问题
+      vue2.5路由全解析
     </h1>
   
 
@@ -96,16 +91,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><span style="color: #ab0e0e"><br>    场景：安装常用引入Echarts方法显示初始化错误问题，之后找到了一个兼容的解决办法。<br></span><br><a id="more"></a></p>
-<h4 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h4><h5 id="1-之前是按照在index-vue中直接引入线上库，并没有发现什么问题，但是之后在本地安装一个包文件之后就会出现错误"><a href="#1-之前是按照在index-vue中直接引入线上库，并没有发现什么问题，但是之后在本地安装一个包文件之后就会出现错误" class="headerlink" title="1. 之前是按照在index.vue中直接引入线上库，并没有发现什么问题，但是之后在本地安装一个包文件之后就会出现错误"></a>1. 之前是按照在index.vue中直接引入线上库，并没有发现什么问题，但是之后在本地安装一个包文件之后就会出现错误</h5><img src="/2018/04/09/vue2-5引入Echarts出错的问题/quersition.png" title="图片">
-<img src="/2018/04/09/vue2-5引入Echarts出错的问题/error.png" title="图片">
-<h4 id="一、解决方法"><a href="#一、解决方法" class="headerlink" title="一、解决方法"></a>一、解决方法</h4><h5 id="2-将通常使用的ues方法换成使用json对象格式"><a href="#2-将通常使用的ues方法换成使用json对象格式" class="headerlink" title="2. 将通常使用的ues方法换成使用json对象格式"></a>2. 将通常使用的ues方法换成使用json对象格式</h5><img src="/2018/04/09/vue2-5引入Echarts出错的问题/ok.png" title="图片">
-<p>.<br><img src="/2018/04/09/vue2-5引入Echarts出错的问题/dome.png" title="图片"><br>.<br><img src="/2018/04/09/vue2-5引入Echarts出错的问题/init.png" title="图片"><br>.<br><img src="/2018/04/09/vue2-5引入Echarts出错的问题/ok1.png" title="图片"></p>
-
+        <p><span style="color: #ab0e0e"><br>    场景：路由模块功能全解析<br></span><br><a id="more"></a></p>
+<h4 id="一、思维结构图"><a href="#一、思维结构图" class="headerlink" title="一、思维结构图"></a>一、思维结构图</h4><img src="/2018/04/09/vue2-5路由全解析/router.jpg" title="图片">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhuhaishuo.github.io/blog/2018/04/09/vue2-5引入Echarts出错的问题/" data-id="cjfs29z3b0004pwub39rkbnfi" class="article-share-link">Teilen</a>
+      <a data-url="https://zhuhaishuo.github.io/blog/2018/04/09/vue2-5路由全解析/" data-id="cjfs29z3e0005pwubg5e83v0q" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -114,19 +105,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/04/09/vue2-5路由全解析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          vue2.5路由全解析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/09/vue2-5引入Echarts出错的问题/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">vue2.5路由：router-link实现导航，点击跳转显示不同组件</div>
+      <div class="article-nav-title">vue2.5引入Echarts出错的问题</div>
     </a>
   
 </nav>
