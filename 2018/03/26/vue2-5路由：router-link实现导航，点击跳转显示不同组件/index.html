@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue2.5路由：router-link实现导航，点击跳转显示不同组件 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="场景：使用vue的路由实现一个由多组件组成的导航，单页面应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.5路由：router-link实现导航，点击跳转显示不同组件">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="场景：使用vue的路由实现一个由多组件组成的导航，单页面应用">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/main.png">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/index.png">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/vueIndex.png">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/nav1.png">
+<meta property="og:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/nav2.png">
+<meta property="og:updated_time" content="2018-04-09T09:24:44.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.5路由：router-link实现导航，点击跳转显示不同组件">
+<meta name="twitter:description" content="场景：使用vue的路由实现一个由多组件组成的导航，单页面应用">
+<meta name="twitter:image" content="https://zhuhaishuo.github.io/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/main.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">今天心情有点好~</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhuhaishuo.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue2-5路由：router-link实现导航，点击跳转显示不同组件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/" class="article-date">
+  <time datetime="2018-03-26T06:14:18.000Z" itemprop="datePublished">2018-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue2.5路由：router-link实现导航，点击跳转显示不同组件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><span style="color: #ab0e0e"><br>    场景：使用vue的路由实现一个由多组件组成的导航，单页面应用<br></span><br><a id="more"></a></p>
+<h4 id="一、捋一捋流程"><a href="#一、捋一捋流程" class="headerlink" title="一、捋一捋流程"></a>一、捋一捋流程</h4><h5 id="1-项目运行加载main-js，并引入app-vue模板文件"><a href="#1-项目运行加载main-js，并引入app-vue模板文件" class="headerlink" title="1. 项目运行加载main.js，并引入app.vue模板文件"></a>1. 项目运行加载main.js，并引入app.vue模板文件</h5><h5 id="2-当app-vue执行时，其中有个-router-view-容器，它将用来展示components文件夹下的index-vue，相当于主组件"><a href="#2-当app-vue执行时，其中有个-router-view-容器，它将用来展示components文件夹下的index-vue，相当于主组件" class="headerlink" title="2. 当app.vue执行时，其中有个 router-view 容器，它将用来展示components文件夹下的index.vue，相当于主组件"></a>2. 当app.vue执行时，其中有个 router-view 容器，它将用来展示components文件夹下的index.vue，相当于主组件</h5><h5 id="3-index-vue中的-router-view-是用来容纳各组件的地方。这时候就需要配置好main-js、index-js-router文件夹下路由文件-、index-vue（components文件夹下）"><a href="#3-index-vue中的-router-view-是用来容纳各组件的地方。这时候就需要配置好main-js、index-js-router文件夹下路由文件-、index-vue（components文件夹下）" class="headerlink" title="3. index.vue中的 router-view 是用来容纳各组件的地方。这时候就需要配置好main.js、index.js(router文件夹下路由文件)、index.vue（components文件夹下）"></a>3. index.vue中的 router-view 是用来容纳各组件的地方。这时候就需要配置好main.js、index.js(router文件夹下路由文件)、index.vue（components文件夹下）</h5><h4 id="二、具体配置"><a href="#二、具体配置" class="headerlink" title="二、具体配置"></a>二、具体配置</h4><h5 id="1-配置main-js-前提是已经安装好路由模块：-npm-install-vue-router-–save"><a href="#1-配置main-js-前提是已经安装好路由模块：-npm-install-vue-router-–save" class="headerlink" title="1.配置main.js(前提是已经安装好路由模块： npm install vue-router –save)"></a>1.配置main.js(前提是已经安装好路由模块： npm install vue-router –save)</h5><img src="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/main.png" title="图片">
+<h5 id="2-配置index-js-router文件夹下"><a href="#2-配置index-js-router文件夹下" class="headerlink" title="2.配置index.js(router文件夹下)"></a>2.配置index.js(router文件夹下)</h5><img src="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/index.png" title="图片">
+<h5 id="3-配置index-vue-components文件夹下"><a href="#3-配置index-vue-components文件夹下" class="headerlink" title="3.配置index.vue(components文件夹下)"></a>3.配置index.vue(components文件夹下)</h5><img src="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/vueIndex.png" title="图片">
+<h5 id="4-配置完成"><a href="#4-配置完成" class="headerlink" title="4.配置完成"></a>4.配置完成</h5><img src="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/nav1.png" title="图片">
+<p>.<br><img src="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/nav2.png" title="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhuhaishuo.github.io/blog/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/" data-id="cjfs22of90008ukubgnoaxg40" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/09/vue2-5引入Echarts出错的问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          vue2.5引入Echarts出错的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/23/vue2知识结构图/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">vue2知识结构图</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/by-朱海硕/">by 朱海硕</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/by-朱海硕/" style="font-size: 10px;">by 朱海硕</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/09/vue2-5引入Echarts出错的问题/">vue2.5引入Echarts出错的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/26/vue2-5路由：router-link实现导航，点击跳转显示不同组件/">vue2.5路由：router-link实现导航，点击跳转显示不同组件</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/23/vue2知识结构图/">vue2知识结构图</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/21/Atom编辑器不能安装插件问题/">Atom编辑器不能安装插件问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/14/森源项目部署流程/">森源项目部署流程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 朱海硕<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

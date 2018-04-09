@@ -5,19 +5,17 @@
   
 
   
-  <title>Angular4.0搭建新项目 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言：最近公司新项目或许会用到Angular4，所以事先先了解一下如何搭建一个基本项目以及创建项目所需要的环境配置等。以下是Angular4.0基本项目的搭建过程。">
-<meta name="keywords" content="by 朱海硕">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Angular4.0搭建新项目">
-<meta property="og:url" content="https://zhuhaishuo.github.io/blog/2017/09/27/Angular4-0搭建新项目/index.html">
+  <meta name="description" content="博客~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://zhuhaishuo.github.io/blog/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言：最近公司新项目或许会用到Angular4，所以事先先了解一下如何搭建一个基本项目以及创建项目所需要的环境配置等。以下是Angular4.0基本项目的搭建过程。">
-<meta property="og:updated_time" content="2018-02-10T09:51:57.281Z">
+<meta property="og:description" content="博客~">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular4.0搭建新项目">
-<meta name="twitter:description" content="前言：最近公司新项目或许会用到Angular4，所以事先先了解一下如何搭建一个基本项目以及创建项目所需要的环境配置等。以下是Angular4.0基本项目的搭建过程。">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="博客~">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -68,7 +66,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Angular4-0搭建新项目" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Angular4-0搭建新项目" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/27/Angular4-0搭建新项目/" class="article-date">
   <time datetime="2017-09-27T05:19:25.000Z" itemprop="datePublished">2017-09-27</time>
@@ -81,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Angular4.0搭建新项目
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/27/Angular4-0搭建新项目/">Angular4.0搭建新项目</a>
     </h1>
   
 
@@ -92,7 +92,12 @@
       
         <p><span style="color: #ab0e0e"><br>    前言：最近公司新项目或许会用到Angular4，所以事先先了解一下如何搭建一个基本项目以及创建项目所需要的环境配置等。以下是Angular4.0基本项目的搭建过程。<br></span></p>
 <p><hr></p>
-<div><a id="more"></a></div><br><div style="color: #ab0e0e; font-size: 18px; font-weight: bold;"><br>    一、安装node.js<br></div><br>    1. 高版本node包含npm，不用单独进行安装，如果node版本过低需要再单独安装npm<br>    2. 安装好node.js之后检测node版本与npm版本,看是否安装成功<br><div class="content"><br>    <pre>node -v</pre><br>    <pre>npm -v</pre><br>    <div style="color: #ab0e0e; font-size: 18px; font-weight: bold;"><br>        (二)安装angular-cli工具<br>    </div><br>    1.输入指令，进行安装。<pre>npm install -g @angular/cli</pre><br>    2.等待安装完成之后检测是否安装成功<pre>ng -v</pre><br>    <div style="color: #ab0e0e; font-size: 18px; font-weight: bold;"><br>        (三)开始创基本建项目<br>    </div><br>    1.输入指令<pre>ng new product</pre>(product是项目名称)。<br>    2.打开新创建的项目，可以看到一个基本项目的目录结构了。<br>    <div style="color: #ab0e0e; font-size: 18px; font-weight: bold;"><br>        (四)Angular4引入第三方库步骤描述<br>    </div><br>    1.引入jQuery：命令行中cd到新建项目文件夹下输入指令<pre>npm install jQuery –save</pre><br>    2.引入bootstrap：同样的指令<pre>npm install bootstrap –save</pre><br>    3.安装完第三方插件后，打开项目目录的node_module文件夹会找到刚才安装的jQuery与bootstrap。<br><br>    4.需要注意的是Angular4是基于ES6的typescript语法写的，所以我们引入了jQuery和bootstrap后并不能直接使用，我们还需要安装typescript来识别它们，输入指令：<br>    <pre>npm install @types/bootstrap –save-dev</pre><br>    <pre>npm install @types/bootstrap –save-dev</pre><br>    <div style="color: #ab0e0e; font-size: 18px; font-weight: bold;"><br>        (五)使用Angular-cli工具生成组件/模块<br>    </div><br>    1.如果说我们需要创建一个头部导航的组件，可以使用指令<pre>ng -g component head</pre>(head是组件名称)。<br>    2.基本的组件就创建成功后，打开项目src/app/文件目录会发现多了个文件夹head，然后就可以对文件夹中的html、css文件进行编译了。<br>    3.angular有依赖注入的特性，所以在安装第三方插件和head，foot模块时需要在后缀名为.ts的文件中配置。<br></div>
+<div></div>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/27/Angular4-0搭建新项目/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -104,23 +109,16 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2017/10/26/Vue2-0搭建新项目/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          Vue2.0搭建新项目
-        
-      </div>
-    </a>
-  
-  
-</nav>
+</article>
+
 
   
-</article>
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
